@@ -3,7 +3,8 @@
 	<persistence-unit name="EventTrackerJPA">
 	
 	<!-- BEGIN ENTITIES -->
-	<class>com.skilldistillery.eventtracker.entities</class>
+	<class>com.skilldistillery.eventtracker.entities.User</class>
+	<class>com.skilldistillery.eventtracker.entities.Game</class>
 	<!-- END ENTITIES -->
 	
 	<properties>
