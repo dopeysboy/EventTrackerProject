@@ -20,11 +20,11 @@ public class Game {
 	private int id;
 	
 	private String title;
-	private double msrp;
+	private Double msrp;
 	private String description;
 	
 	@Column(name="online_mp")
-	private boolean onlineMp;
+	private Boolean onlineMp;
 
 	@ManyToMany
 	@JoinTable(name="game_publisher",
@@ -62,11 +62,11 @@ public class Game {
 		this.title = title;
 	}
 
-	public double getMsrp() {
+	public Double getMsrp() {
 		return msrp;
 	}
 
-	public void setMsrp(double msrp) {
+	public void setMsrp(Double msrp) {
 		this.msrp = msrp;
 	}
 
@@ -78,11 +78,11 @@ public class Game {
 		this.description = description;
 	}
 
-	public boolean isOnlineMp() {
+	public Boolean getOnlineMp() {
 		return onlineMp;
 	}
 
-	public void setOnlineMp(boolean onlineMp) {
+	public void setOnlineMp(Boolean onlineMp) {
 		this.onlineMp = onlineMp;
 	}
 
