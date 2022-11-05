@@ -85,8 +85,10 @@ public class GameServiceImpl implements GameService{
 					|| newGame.getOnlineMp() == null) {
 				return null;
 			}
-			
+
+			newGame.setId(oldId);
 			gameRepo.saveAndFlush(newGame);
+			
 			return newGame;
 		}
 	}
