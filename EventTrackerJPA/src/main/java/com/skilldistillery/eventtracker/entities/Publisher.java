@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Publisher {
 	@Id
@@ -18,6 +20,7 @@ public class Publisher {
 	private String name;
 	
 	@ManyToMany(mappedBy = "publishers")
+	@JsonIgnoreProperties({"publishers"})
 	private List<Game> games;
 	
 	public Publisher() {}

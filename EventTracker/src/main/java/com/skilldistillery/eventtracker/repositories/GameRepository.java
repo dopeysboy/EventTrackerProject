@@ -9,13 +9,13 @@ import com.skilldistillery.eventtracker.entities.Game;
 
 public interface GameRepository extends JpaRepository<Game, Integer>{
 
-	List<Game> findByPublisherName(String name);
+	List<Game> findByPublishers_Name(String name);
 	
-	List<Game> findByGenreName(String name);
+	List<Game> findByGenres_Name(String name);
 	
 	List<Game> findByTitleContainsOrDescriptionContains(String keyword, String keywordAgain);
 	
-	List<Game> findByMultiplayerEquals(boolean isMultiplayer);
+	List<Game> findByOnlineMpEquals(boolean isMultiplayer);
 
-	List<Game> findByMsrpGreaterThanEqualToAndMsrpLessThanEqualTo(double low, double high);
+	List<Game> findByMsrpGreaterThanEqualAndMsrpLessThanEqual(double low, double high);
 }

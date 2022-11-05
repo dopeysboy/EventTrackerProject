@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Game {
 	@Id
@@ -30,18 +32,21 @@ public class Game {
 	@JoinTable(name="game_publisher",
 			joinColumns = @JoinColumn(name= "game_id"),
 			inverseJoinColumns = @JoinColumn(name = "publisher_id"))
+	@JsonIgnoreProperties({"games"})
 	private List<Publisher> publishers; 
 
 	@ManyToMany
 	@JoinTable(name="game_genre",
 			joinColumns = @JoinColumn(name="game_id"),
 			inverseJoinColumns = @JoinColumn(name="genre_id"))
+	@JsonIgnoreProperties({"games"})
 	private List<Genre> genres;
 	
 	@ManyToMany
 	@JoinTable(name="sale_game",
 			joinColumns = @JoinColumn(name="game_id"),
 			inverseJoinColumns = @JoinColumn(name="sale_id"))
+	@JsonIgnoreProperties({"games"})
 	private List<Sale> sales;
 	
 	public Game() {}

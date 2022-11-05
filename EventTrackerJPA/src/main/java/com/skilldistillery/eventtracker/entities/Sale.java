@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Sale {
 	@Id
@@ -30,6 +32,7 @@ public class Sale {
 	private String description;
 	
 	@ManyToMany(mappedBy = "sales")
+	@JsonIgnoreProperties({"sales"})
 	private List<Game> games;
 	
 	public Sale() {}

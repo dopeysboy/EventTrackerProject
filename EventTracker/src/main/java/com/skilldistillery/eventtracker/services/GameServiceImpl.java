@@ -32,13 +32,13 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public List<Game> findGamesByGenreName(String name) {
-		List<Game> games = gameRepo.findByGenreName(name);
+		List<Game> games = gameRepo.findByGenres_Name(name);
 		return games;
 	}
 
 	@Override
 	public List<Game> findGamesByPublisherName(String name) {
-		return gameRepo.findByPublisherName(name);
+		return gameRepo.findByPublishers_Name(name);
 	}
 
 	@Override
@@ -48,12 +48,12 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public List<Game> findGamesByMultiplayer(boolean isMultiplayer) {
-		return gameRepo.findByMultiplayerEquals(isMultiplayer);
+		return gameRepo.findByOnlineMpEquals(isMultiplayer);
 	}
 
 	@Override
 	public List<Game> findGamesByPriceRange(double low, double high) {
-		return gameRepo.findByMsrpGreaterThanEqualToAndMsrpLessThanEqualTo(low, high);
+		return gameRepo.findByMsrpGreaterThanEqualAndMsrpLessThanEqual(low, high);
 	}
 
 	@Override

@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Genre {
 	@Id
@@ -18,6 +20,7 @@ public class Genre {
 	private String name;
 	
 	@ManyToMany(mappedBy = "genres")
+	@JsonIgnoreProperties({"genres"})
 	private List<Game> games;
 	
 	public Genre() {}
