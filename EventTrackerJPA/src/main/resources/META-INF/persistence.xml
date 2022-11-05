@@ -5,6 +5,9 @@
 	<!-- BEGIN ENTITIES -->
 	<class>com.skilldistillery.eventtracker.entities.User</class>
 	<class>com.skilldistillery.eventtracker.entities.Game</class>
+	<class>com.skilldistillery.eventtracker.entities.Genre</class>
+	<class>com.skilldistillery.eventtracker.entities.Publisher</class>
+	<class>com.skilldistillery.eventtracker.entities.Sale</class>
 	<!-- END ENTITIES -->
 	
 	<properties>

@@ -1,11 +1,17 @@
 package com.skilldistillery.eventtracker.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Game {
@@ -14,6 +20,29 @@ public class Game {
 	private int id;
 	
 	private String title;
+	private double msrp;
+	private String description;
+	
+	@Column(name="online_mp")
+	private boolean onlineMp;
+
+	@ManyToMany
+	@JoinTable(name="game_publisher",
+			joinColumns = @JoinColumn(name= "game_id"),
+			inverseJoinColumns = @JoinColumn(name = "publisher_id"))
+	private List<Publisher> publishers; 
+
+	@ManyToMany
+	@JoinTable(name="game_genre",
+			joinColumns = @JoinColumn(name="game_id"),
+			inverseJoinColumns = @JoinColumn(name="genre_id"))
+	private List<Genre> genres;
+	
+	@ManyToMany
+	@JoinTable(name="sale_game",
+			joinColumns = @JoinColumn(name="game_id"),
+			inverseJoinColumns = @JoinColumn(name="sale_id"))
+	private List<Sale> sales;
 	
 	public Game() {}
 
@@ -33,6 +62,108 @@ public class Game {
 		this.title = title;
 	}
 
+	public double getMsrp() {
+		return msrp;
+	}
+
+	public void setMsrp(double msrp) {
+		this.msrp = msrp;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean isOnlineMp() {
+		return onlineMp;
+	}
+
+	public void setOnlineMp(boolean onlineMp) {
+		this.onlineMp = onlineMp;
+	}
+
+	public List<Publisher> getPublishers() {
+		return publishers;
+	}
+
+	public void setPublishers(List<Publisher> publishers) {
+		this.publishers = publishers;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
+	public void addPublisher(Publisher pub) {
+		if(publishers == null) {
+			publishers = new ArrayList<>();
+		}
+		
+		if(!publishers.contains(pub)) {
+			publishers.add(pub);
+			pub.addGame(this);
+		}
+	}
+	
+	public void removePublisher(Publisher pub) {
+		if(publishers != null && publishers.contains(pub)) {
+			publishers.remove(pub);
+			pub.removeGame(this);
+		}
+	}
+	
+	public void addGenre(Genre genre) {
+		if(genres == null) {
+			genres = new ArrayList<>();
+		}
+		
+		if(!genres.contains(genre)) {
+			genres.add(genre);
+			genre.addGame(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		if(genres != null && genres.contains(genre)) {
+			genres.remove(genre);
+			genre.removeGame(this);
+		}
+	}
+	
+	public void addSale(Sale sale) {
+		if(sales == null) {
+			sales = new ArrayList<>();
+		}
+		
+		if(!sales.contains(sale)) {
+			sales.add(sale);
+			sale.addGame(this);
+		}
+	}
+	
+	public void removeSale(Sale sale) {
+		if(sales != null && sales.contains(sale)) {
+			sales.remove(sale);
+			sale.removeGame(this);
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
