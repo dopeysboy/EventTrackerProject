@@ -32,13 +32,13 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public List<Game> findGamesByGenreName(String name) {
-		List<Game> games = gameRepo.findByGenres_Name(name);
+		List<Game> games = gameRepo.findByGenres_NameContains(name);
 		return games;
 	}
 
 	@Override
 	public List<Game> findGamesByPublisherName(String name) {
-		return gameRepo.findByPublishers_Name(name);
+		return gameRepo.findByPublishers_NameContains(name);
 	}
 
 	@Override

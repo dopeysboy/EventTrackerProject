@@ -4,10 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.RepaintManager;
-import javax.websocket.server.PathParam;
 
-import org.aspectj.weaver.ast.Literal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -72,6 +69,13 @@ public class GameController {
 	@GetMapping("games/msrp/{low}/{high}")
 	public List<Game> getGamesByPriceRange(@PathVariable double low, @PathVariable double high){
 		List<Game> games = gameServ.findGamesByPriceRange(low, high);
+		
+		return games;
+	}
+	
+	@GetMapping("games/publisher/{name}")
+	public List<Game> getGamesByPublisherName(@PathVariable String name, HttpServletResponse resp){
+		List<Game> games = gameServ.findGamesByPublisherName(name);
 		
 		return games;
 	}
