@@ -28,7 +28,7 @@ public class SaleServiceImpl implements SaleService{
 
 	@Override
 	public List<Sale> findSalesByKeyword(String keyword) {
-		return saleRepo.findByNameContainsOrDescriptionContains(keyword);
+		return saleRepo.findByNameContainsOrDescriptionContains(keyword, keyword);
 	}
 
 	@Override
@@ -136,6 +136,13 @@ public class SaleServiceImpl implements SaleService{
 		saleRepo.saveAndFlush(sale);
 		
 		return sale;
+	}
+
+	@Override
+	public List<Sale> findSalesDuringLDT(LocalDateTime dateTimeToCheck) {
+		List<Sale> sales = saleRepo.findByDateStart_IsBeforeAndDateEnd_IsAfter(dateTimeToCheck, dateTimeToCheck);
+		
+		return sales;
 	}
 	
 	

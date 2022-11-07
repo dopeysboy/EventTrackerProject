@@ -1,5 +1,6 @@
 package com.skilldistillery.eventtracker.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -136,4 +137,12 @@ public class SaleController {
 		
 		return sale;
 	}
+	
+	@GetMapping("sales/during")
+	public List<Sale> getSalesDuringTime(@RequestBody LocalDateTime ldt) {
+		List<Sale> sales = saleServ.findSalesDuringLDT(ldt);
+		
+		return sales;
+	}
+
 }
