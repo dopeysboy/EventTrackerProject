@@ -33,8 +33,8 @@
 | Update   | PUT       | `/api/games/id/{id}`                         | JSON to update Game      | JSON of updated Game                                         |
 | Update   | PUT       | `/api/games/id/{gId}/publisher/add/{pId}`    |                          | JSON of updated Game                                         |
 | Update   | PUT       | `/api/games/id/{gId}/publisher/remove/{pId}` |                          | JSON of updated Game                                         |
-| Update   | PUT       | `/api/games/id/{gId}/genre/add/{gId}`        |                          | JSON of updated Game                                         |
-| Update   | PUT       | `/api/games/id/{id}/genre/remove/{gId}`      |                          | JSON of updated Game                                         |
+| Update   | PUT       | `/api/games/id/{gId}/genre/add/{genId}`      |                          | JSON of updated Game                                         |
+| Update   | PUT       | `/api/games/id/{id}/genre/remove/{genId}`    |                          | JSON of updated Game                                         |
 | Delete   | DELETE    | `/api/games/id/{id}`                         |                          |                                                              |
 | Read     | GET       | `/api/genres`                                |                          | List of all Genres                                           |
 | Read     | GET       | `/api/genres/id/{id}`                        |                          | Genre associated with given id                               |
