@@ -27,7 +27,7 @@ public class Sale {
 	private LocalDateTime dateEnd;
 	
 	@Column(name="percent_discount")
-	private double percentDiscount;
+	private Double percentDiscount;
 	private String name;
 	private String description;
 	
@@ -61,11 +61,11 @@ public class Sale {
 		this.dateEnd = dateEnd;
 	}
 
-	public double getPercentDiscount() {
+	public Double getPercentDiscount() {
 		return percentDiscount;
 	}
 
-	public void setPercentDiscount(double percentDiscount) {
+	public void setPercentDiscount(Double percentDiscount) {
 		this.percentDiscount = percentDiscount;
 	}
 
