@@ -131,4 +131,60 @@ public class GameController {
 			resp.setStatus(400);
 		}
 	}
+	
+	@PutMapping("games/id/{gId}/publisher/add/{pId}")
+	public Game addPublisherToGame(@PathVariable int gId,
+									@PathVariable int pId,
+									HttpServletRequest req,
+									HttpServletResponse resp) {
+		Game game = gameServ.addPublisherToGame(gId, pId);
+		
+		if(game == null) {
+			resp.setStatus(400);
+		}
+		
+		return game;
+	}
+	
+	@PutMapping("games/id/{gId}/publisher/remove/{pId}")
+	public Game removePublisherFromGame(@PathVariable int gId,
+									@PathVariable int pId,
+									HttpServletRequest req,
+									HttpServletResponse resp) {
+		Game game = gameServ.removePublisherFromGame(gId, pId);
+		
+		if(game == null) {
+			resp.setStatus(400);
+		}
+		
+		return game;
+	}
+	
+	@PutMapping("games/id/{gId}/genre/add/{genId}")
+	public Game addGenreToGame(@PathVariable int gId,
+									@PathVariable int genId,
+									HttpServletRequest req,
+									HttpServletResponse resp) {
+		Game game = gameServ.addGenreToGame(gId, genId);
+		
+		if(game == null) {
+			resp.setStatus(400);
+		}
+		
+		return game;
+	}
+	
+	@PutMapping("games/id/{gId}/genre/remove/{genId}")
+	public Game removeGenreFromGame(@PathVariable int gId,
+									@PathVariable int genId,
+									HttpServletRequest req,
+									HttpServletResponse resp) {
+		Game game = gameServ.removeGenreFromGame(gId, genId);
+		
+		if(game == null) {
+			resp.setStatus(400);
+		}
+		
+		return game;
+	}
 }

@@ -25,4 +25,12 @@ public interface GameService {
 	boolean deleteGame(Game game);
 	
 	Game updateGame(Game newGame, int oldId);
+	
+	Game addGenreToGame(int gameId, int genreId);
+	
+	Game addPublisherToGame(int gameId, int publisherId);
+	
+	Game removeGenreFromGame(int gameId, int genreId);
+	
+	Game removePublisherFromGame(int gameId, int publisherId);
 }
