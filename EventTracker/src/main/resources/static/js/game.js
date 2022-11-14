@@ -21,7 +21,7 @@ function getSingleGame(gameId){
 function deleteGameRequest(gameId){
 	let requestMethod ='DELETE';
 	let url = `/api/games/id/${gameId}`;
-	let readyStateFunction = displayGameList;
+	let readyStateFunction = loadGameList;
 	
 	xhrRequest(requestMethod, url, readyStateFunction);
 }
@@ -29,29 +29,34 @@ function deleteGameRequest(gameId){
 function editGameRequest(game, gameId){
 	let requestMethod = 'PUT';
 	let url = `/api/games/id/${gameId}`;
-	let readyStateFunction = displayGameList;
+	let readyStateFunction = function(data){
+		console.log(data);
+	};
 	let requestBody = JSON.stringify(game);
 	
-	xhrRequest(requestMethod, url, readyStateFunction, requestBody);
+	xhrRequest(requestMethod, url, readyStateFunction, false, requestBody);
+	loadGameList();
 }
 
 function createGameRequest(game){
 	let requestMethod = 'POST';
 	let url = "/api/games";
-	let readyStateFunction = displayGameList;
+	let readyStateFunction = function(data){
+		console.log(data);
+	};
 	let requestBody = JSON.stringify(game);
 	
-	xhrRequest(requestMethod, url, readyStateFunction, requestBody);	
+	xhrRequest(requestMethod, url, readyStateFunction, false, requestBody);
+	loadGameList();	
 }
 
 var createGame = function(e){
 	e.preventDefault();
+	console.log('In createGame!');
 	
-	let form = e.target.parentElement;
-	
-	let formTitle = document.getElementById('createTitle').textContent;
-	let formDescription = document.getElementById('createDescription').textContent;
-	let formMsrp = document.getElementById('createMsrp').textContent;
+	let formTitle = document.getElementById('createTitle').value;
+	let formDescription = document.getElementById('createDescription').value;
+	let formMsrp = document.getElementById('createMsrp').value;
 
 	let game = {
 		title: formTitle,
@@ -60,6 +65,7 @@ var createGame = function(e){
 	};
 	
 	createGameRequest(game);
+	gameCreation.reset();
 }
 
 var deleteGame = function(e){
@@ -76,7 +82,7 @@ var deleteGame = function(e){
 var editGame = function(e){
 	e.preventDefault();
 	
-	let elements = [];
+	console.log()
 	
 	let form = document.gameEdit;
 	
@@ -122,7 +128,7 @@ var displayGameList = function(games){
 	
 	//clean table so duplicate data doesn't get added, and unhide table
 	table.style.display = '';
-	tbody.displayText = '';
+	tbody.textContent = '';
 
 	for(let game of games){
 		let tr = document.createElement('tr');
@@ -150,9 +156,6 @@ var displaySingleGame = function(game){
 	
 	//hide table, so headers don't show up
 	table.style.display = 'none';
-	
-	//properties you want displayed
-	let properties = ['genres', 'sales'];
 
 	let singleGame = document.createElement('div');
 	singleGame.id = 'singleGame';
@@ -215,18 +218,21 @@ var displaySingleGame = function(game){
 	let editBtn = document.createElement('button');
 	editBtn.textContent = 'Edit this game';
 	editBtn.className = 'btn btn-secondary';
+	editBtn.name = 'edit';
 	editBtn.addEventListener('click', editGame);
 	elements.push(editBtn);
 	
 	let deleteBtn = document.createElement('button');
 	deleteBtn.textContent = 'Delete this game';
 	deleteBtn.className = 'btn btn-danger';
+	deleteBtn.name = 'delete';
 	deleteBtn.addEventListener('click', deleteGame);
 	elements.push(deleteBtn);
 	
 	let returnBtn = document.createElement('button');
 	returnBtn.textContent = 'Return to all games';
 	returnBtn.className = 'btn btn-primary';
+	returnBtn.name = 'return';
 	returnBtn.addEventListener('click', loadGameList);
 	elements.push(returnBtn);
 	
