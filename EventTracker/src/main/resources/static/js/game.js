@@ -4,7 +4,7 @@ function loadGameList(e){
 	}
 	
 	let requestMethod = 'GET';
-	let url = '/api/games';
+	let url = 'api/games';
 	let readyStateFunction = displayGameList;
 	
 	xhrRequest(requestMethod, url, readyStateFunction);
@@ -12,7 +12,7 @@ function loadGameList(e){
 
 function getSingleGame(gameId){
 	let requestMethod = 'GET';
-	let url = `/api/games/id/${gameId}`;
+	let url = `api/games/id/${gameId}`;
 	let readyStateFunction = displaySingleGame;
 	
 	xhrRequest(requestMethod, url, readyStateFunction);
@@ -20,7 +20,7 @@ function getSingleGame(gameId){
 
 function deleteGameRequest(gameId){
 	let requestMethod ='DELETE';
-	let url = `/api/games/id/${gameId}`;
+	let url = `api/games/id/${gameId}`;
 	let readyStateFunction = loadGameList;
 	
 	xhrRequest(requestMethod, url, readyStateFunction);
@@ -28,7 +28,7 @@ function deleteGameRequest(gameId){
 
 function editGameRequest(game, gameId){
 	let requestMethod = 'PUT';
-	let url = `/api/games/id/${gameId}`;
+	let url = `api/games/id/${gameId}`;
 	let readyStateFunction = function(data){
 		console.log(data);
 	};
@@ -40,7 +40,7 @@ function editGameRequest(game, gameId){
 
 function createGameRequest(game){
 	let requestMethod = 'POST';
-	let url = "/api/games";
+	let url = "api/games";
 	let readyStateFunction = function(data){
 		console.log(data);
 	};
