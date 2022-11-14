@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Event Tracker</title>
+		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css"/>
+		
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div id="content">
+				<h1>Welcome to Event Tracker!</h1>
+			</div>
+			<div id="gameListDiv">
+				<table id="gameTable" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Title</th>
+							<th>MSRP</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody id="tableBody">
+					</tbody>
+				</table>
+			</div>
+			<div id="gameEditContainer" style="display:none;">
+				<form name="gameEdit">
+					<label for="title">Title</label>
+					<input type="text" name="title" id='editTitle' required/><br>
+					<label for="msrp">MSRP</label>
+					<input type="number" name="msrp" id='editMsrp' required/><br>
+					<label for="description">Description</label>
+					<textarea name="description" rows="10" cols="50" id='editDescription'></textarea>
+					
+					<input type="submit" name="submit" value="Submit new Game"/>
+				</form>
+			</div>
+			<div id="gameCreationContainer">
+				<form name="gameCreation">
+					<label for="title">Title</label>
+					<input type="text" name="title" id='createTitle' required/><br>
+					<label for="msrp">MSRP</label>
+					<input type="number" name="msrp" id='createMsrp' required/><br>
+					<label for="description">Description</label>
+					<textarea name="description" rows="10" cols="50" id='createDescription'></textarea>
+					
+					<input type="submit" name="submit" value="Submit new Game"/>
+				</form>
+			</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	</body>
+</html>

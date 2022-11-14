@@ -22,6 +22,7 @@
 
 | CRUD Op. | HTTP Verb | URI                                          | Request Body             | Response Body                                                |
 |----------|-----------|----------------------------------------------|--------------------------|--------------------------------------------------------------|
+|          | GET       | `/api`                                       |                          | API endpoints                                                |
 | Read     | GET       | `/api/games`                                 |                          | List of all Games                                            |
 | Read     | GET       | `/api/games/id/{id}`                         |                          | The Game associated with given id                            |
 | Read     | GET       | `/api/games/genre/{name}`                    |                          | List of Games with the named Genre                           |
@@ -33,8 +34,8 @@
 | Update   | PUT       | `/api/games/id/{id}`                         | JSON to update Game      | JSON of updated Game                                         |
 | Update   | PUT       | `/api/games/id/{gId}/publisher/add/{pId}`    |                          | JSON of updated Game                                         |
 | Update   | PUT       | `/api/games/id/{gId}/publisher/remove/{pId}` |                          | JSON of updated Game                                         |
-| Update   | PUT       | `/api/games/id/{gId}/genre/add/{genId}`      |                          | JSON of updated Game                                         |
-| Update   | PUT       | `/api/games/id/{id}/genre/remove/{genId}`    |                          | JSON of updated Game                                         |
+| Update   | PUT       | `/api/games/id/{gId}/genre/add/{gId}`        |                          | JSON of updated Game                                         |
+| Update   | PUT       | `/api/games/id/{id}/genre/remove/{gId}`      |                          | JSON of updated Game                                         |
 | Delete   | DELETE    | `/api/games/id/{id}`                         |                          |                                                              |
 | Read     | GET       | `/api/genres`                                |                          | List of all Genres                                           |
 | Read     | GET       | `/api/genres/id/{id}`                        |                          | Genre associated with given id                               |
@@ -57,8 +58,7 @@
 | Update   | PUT       | `/api/sales/id/{id}`                         | JSON to update Publisher | JSON of updated Publisher                                    |
 | Update   | PUT       | `/api/sales/id/{sId}/add/game/{gId}`         |                          | Updated Sale                                                 |
 | Update   | PUT       | `/api/sales/id/{sId}/remove/game/{gId}`      |                          | Updated Sale                                                 |
-| Delete   | DELETE    | `api/sales/id/{id}`                          |                          |                                                              |
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+| Delete   | DELETE    | `api/sales/id/{id}`                          |                          |                                                              |<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <a name="readme-learned"></a>
 <h2 align="center">Things learned</h2>
 <p>I got much more comfortable with Postman during this project and feel confident in using the application.</p>
