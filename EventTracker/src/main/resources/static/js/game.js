@@ -34,6 +34,34 @@ function editGameRequest(game, gameId){
 	
 	xhrRequest(requestMethod, url, readyStateFunction, requestBody);
 }
+
+function createGameRequest(game){
+	let requestMethod = 'POST';
+	let url = "/api/games";
+	let readyStateFunction = displayGameList;
+	let requestBody = JSON.stringify(game);
+	
+	xhrRequest(requestMethod, url, readyStateFunction, requestBody);	
+}
+
+var createGame = function(e){
+	e.preventDefault();
+	
+	let form = e.target.parentElement;
+	
+	let formTitle = document.getElementById('createTitle').textContent;
+	let formDescription = document.getElementById('createDescription').textContent;
+	let formMsrp = document.getElementById('createMsrp').textContent;
+
+	let game = {
+		title: formTitle,
+		description: formDescription,
+		msrp: formMsrp
+	};
+	
+	createGameRequest(game);
+}
+
 var deleteGame = function(e){
 	e.preventDefault();
 	
@@ -58,10 +86,26 @@ var editGame = function(e){
 	let title = document.getElementById('title').textContent;
 	let description = document.getElementById('description').textContent;
 	let msrp = document.getElementById('msrp').textContent.substring(1);
-	let publishers = document.getElementById('publishers');
-	let genres = document.getElementById('genres');
+//	let publishers = document.getElementById('publishers');
+//	let genres = document.getElementById('genres');
 	
-	let formTitle =;
+	let formTitle = document.getElementById('editTitle');
+	let formDescription = document.getElementById('editDescription');
+	let formMsrp = document.getElementById('editMsrp');
+	
+	formTitle.textContent = title;
+	formDescription.textContent = description;
+	formMsrp.textContent = msrp;
+	
+	let submit = document.getElementById('editSubmit');
+	submit.addEventListener('click', function(e){
+		let game = {
+			title: formTitle.textContent,
+			description: formDescription.textContent,
+			msrp: formMsrp.textContent
+		};
+		editGameRequest(game, id);
+	});
 }
 
 var displayGameList = function(games){

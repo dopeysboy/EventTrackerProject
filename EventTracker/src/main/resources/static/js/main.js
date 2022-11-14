@@ -4,8 +4,10 @@ window.addEventListener('load', function(e) {
 })
 
 function init(){
-	//TODO: setup event listeners
 	loadGameList();
+	
+	let createSubmit = document.getElementById('createSubmit');
+	createSubmit.addEventListener('click', createGame);
 }
 
 function xhrRequest(requestMethod, url, readyStateFunction, requestBody){
