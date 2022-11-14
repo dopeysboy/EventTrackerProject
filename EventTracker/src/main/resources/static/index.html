@@ -30,7 +30,7 @@
 				</table>
 			</div>
 			<div id="gameEditContainer" style="display:none;">
-				<form name="gameEdit">
+				<form name="gameEdit" id="gameEdit">
 					<label for="title">Title</label>
 					<input type="text" name="title" id='editTitle' required/><br>
 					<label for="msrp">MSRP</label>
@@ -38,7 +38,8 @@
 					<label for="description">Description</label>
 					<textarea name="description" rows="10" cols="50" id='editDescription'></textarea>
 					
-					<input type="submit" name="submit" id="editSubmit" value="Submit new Game"/>
+					<input type="submit" class="btn btn-primary" name="submit" id="editSubmit" value="Submit edits"/>
+					<input type="submit" class="btn btn-secondary" name="cancel" id="editCancel" value="Cancel edits"/>
 				</form>
 			</div>
 			<div id="gameCreationContainer">

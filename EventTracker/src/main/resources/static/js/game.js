@@ -82,11 +82,13 @@ var deleteGame = function(e){
 var editGame = function(e){
 	e.preventDefault();
 	
-	console.log()
+	let formDiv = document.getElementById('gameEditContainer');
+	formDiv.style.display = '';
 	
-	let form = document.gameEdit;
+	let gameListDiv = document.getElementById('gameListDiv');
+	gameListDiv.style.display = 'none';
 	
-	form.style.display = '';
+	document.gameCreation.style.display = 'none';
 	
 	let id = document.getElementById('id').textContent;
 	let title = document.getElementById('title').textContent;
@@ -99,18 +101,33 @@ var editGame = function(e){
 	let formDescription = document.getElementById('editDescription');
 	let formMsrp = document.getElementById('editMsrp');
 	
-	formTitle.textContent = title;
-	formDescription.textContent = description;
-	formMsrp.textContent = msrp;
+	formTitle.value = title;
+	formDescription.value = description;
+	formMsrp.value = msrp;
 	
 	let submit = document.getElementById('editSubmit');
 	submit.addEventListener('click', function(e){
+		e.preventDefault();
 		let game = {
-			title: formTitle.textContent,
-			description: formDescription.textContent,
-			msrp: formMsrp.textContent
+			title: formTitle.value,
+			description: formDescription.value,
+			msrp: formMsrp.value
 		};
+		
 		editGameRequest(game, id);
+		formDiv.style.display = 'none';
+		document.gameCreation.style.display = '';
+		gameListDiv.style.display = '';
+	});
+	
+	let cancel = document.getElementById('editCancel');
+	cancel.addEventListener('click', function(e){
+		e.preventDefault();
+		
+		loadGameList();
+		formDiv.style.display = 'none';
+		document.gameCreation.style.display = '';
+		gameListDiv.style.display = '';
 	});
 }
 
