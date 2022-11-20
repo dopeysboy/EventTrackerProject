@@ -10,7 +10,7 @@ export class NavigationComponent implements OnInit {
   term: string = '';
 
   searchSite(term:string){
-
+    //TODO: keyword search of games and/or publishers?
   }
 
   constructor() { }

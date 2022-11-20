@@ -11,13 +11,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
+import { GameListComponent } from './components/game-list/game-list.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { SalePageComponent } from './components/sale-page/sale-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    NavigationComponent
+    NavigationComponent,
+    GameListComponent,
+    SearchComponent,
+    SearchResultsComponent,
+    SalePageComponent
   ],
   imports: [
     BrowserModule,
