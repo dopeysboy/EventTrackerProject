@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+
+  <a class="nav-item nav-link" href="#">Home</a>
+  <a class="nav-item nav-link" href="#">Games</a>
+  <a class="nav-item nav-link" href="#">Sales</a>
+  <a class="nav-item nav-link" href="#">Publishers</a>
+
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="text" name="term" placeholder="Search" [(ngModel)]="term">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchSite(term)">Search</button>
+  </form>
+</nav>

@@ -8,17 +8,23 @@ import { HomeComponent } from './components/home/home.component';
 import { GameService } from './services/game.service';
 import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [
     GameService,
