@@ -1,18 +1,63 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>MSRP</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let game of games">
-      <td>{{game.id}}</td>
-      <td>{{game.title}}</td>
-      <td>{{game.description}}</td>
-      <td>{{game.msrp}}</td>
-    </tr>
-  </tbody>
-</table>
+<div *ngIf="games">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>MSRP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of games" (click)="displaySingleGame(game)">
+        <td>{{game.id}}</td>
+        <td>{{game.title}}</td>
+        <td>{{game.description}}</td>
+        <td>{{game.msrp}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="selected">
+  <div class="row">
+    <div class="col centered">
+      <img src="https://pixlr.com/images/index/remove-bg.webp" height="350" width="350" alt="Gamethumbnail"/>
+      <h1>{{selected.title}}</h1>
+    </div>
+    <div class="col">
+      <div class="row centered">
+       <h3>{{selected.msrp | currency}}</h3>
+      </div>
+      <div class="row">
+        <ul>
+          <li *ngFor="let genre of selected.genres">{{genre.name}}</li>
+        </ul>
+        <br>
+        <h4>Publisher(s)</h4>
+        <ul>
+          <li *ngFor="let publisher of selected.publishers">{{publisher.name}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p>{{selected.description}}</p>
+  </div>
+  <div class="row">
+    <div class="btn-group" role="group">
+      <a class="btn btn-outline-success" (click)="editGame()">Edit this Game</a>
+      <a class="btn btn-outline-danger" (click)="destroyGame(selected)">Delete this Game</a>
+      <button type="button" class="btn btn-outline-primary" (click)="returnToList()">Return to List</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editedGame">
+  <form>
+    <input type="text" name="title" placeholder="Title" [(ngModel)]="editedGame.title"/>
+    <input type="text" name="description" placeholder="Description" [(ngModel)]="editedGame.description"/>
+    <input type="text" name="msrp" placeholder="MSRP" [(ngModel)]="editedGame.msrp"/>
+    <button type="button" class="btn btn-success" (click)="submitEditGame(editedGame)">Submit Changes</button>
+  </form>
+</div>

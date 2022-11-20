@@ -33,7 +33,7 @@ export class GameService {
   }
 
   show(gameId: number): Observable<Game>{
-    return this.http.get<Game>(`${this.url}/${gameId}`).pipe(
+    return this.http.get<Game>(`${this.url}/id/${gameId}`).pipe(
       catchError( (err: any) => {
         console.error(err);
         return throwError(
