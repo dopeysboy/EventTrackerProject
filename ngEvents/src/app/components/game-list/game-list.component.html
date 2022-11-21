@@ -19,10 +19,10 @@
   </table>
 </div>
 
-<div *ngIf="selected">
+<div *ngIf="selected && !editedGame">
   <div class="row">
     <div class="col centered">
-      <img src="https://pixlr.com/images/index/remove-bg.webp" height="350" width="350" alt="Gamethumbnail"/>
+      <img [src]="gameThumbnailUrl" height="350" width="350" alt="Gamethumbnail"/>
       <h1>{{selected.title}}</h1>
     </div>
     <div class="col">
@@ -55,9 +55,14 @@
 
 <div *ngIf="editedGame">
   <form>
-    <input type="text" name="title" placeholder="Title" [(ngModel)]="editedGame.title"/>
-    <input type="text" name="description" placeholder="Description" [(ngModel)]="editedGame.description"/>
-    <input type="text" name="msrp" placeholder="MSRP" [(ngModel)]="editedGame.msrp"/>
-    <button type="button" class="btn btn-success" (click)="submitEditGame(editedGame)">Submit Changes</button>
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="editedGame.title"/><br>
+    <label for="description">Description</label>
+    <textarea name="description" class="form-control" placeholder="Description" [(ngModel)]="editedGame.description"></textarea><br>
+    <label for="msrp">MSRP</label>
+    <input type="text" name="msrp" class="form-control" placeholder="MSRP" [(ngModel)]="editedGame.msrp"/><br>
+
+    <button type="button" class="btn btn-outline-success col-6" (click)="submitEditGame(editedGame)">Submit Changes</button>
+    <button type="button" class="btn btn-outline-danger col-6" (click)="returnToList()">Cancel Edit</button>
   </form>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -11,9 +12,10 @@ export class NavigationComponent implements OnInit {
 
   searchSite(term:string){
     //TODO: keyword search of games and/or publishers?
+    this.router.navigateByUrl(`search/${term}`);
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }

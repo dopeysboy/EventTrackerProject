@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'publishers', component: PublishersPageComponent},
   {path: 'publishers/:id', component: PublishersPageComponent},
   {path: 'search', component: SearchComponent},
-  {path: 'search/:keyword', component: SearchResultsComponent},
+  {path: 'search/:term', component: SearchResultsComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

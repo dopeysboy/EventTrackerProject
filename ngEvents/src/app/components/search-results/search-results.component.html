@@ -1,1 +1,24 @@
-<p>search-results works!</p>
+<div *ngIf="results">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>MSRP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of results" (click)="displaySingleGame(game)">
+        <td>{{game.id}}</td>
+        <td>{{game.title}}</td>
+        <td>{{game.description}}</td>
+        <td>{{game.msrp}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="!results">
+  <h1 class="centered error">No results found for '{{term}}'</h1>
+</div>
